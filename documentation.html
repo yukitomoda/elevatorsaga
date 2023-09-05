@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Elevator Saga - help and API documentation</title>
+    <title>Elevator Saga - ヘルプ ＆ APIドキュメント</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="font-awesome-4.1-1.0/css/font-awesome.min.css" type="text/css" media="all">
     <link href='//fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
@@ -16,72 +16,84 @@
 <body>
     <div class="container" style="width: 960px">
         <div class="header">
-            <h1>Elevator Saga <em class="emphasis-color">Help and API documentation</em></h1>
+            <h1>Elevator Saga <em class="emphasis-color">ヘルプ ＆ APIドキュメント</em></h1>
         </div>
 
         <div class="help">
-            <h2>About the game</h2>
+            <h2>このゲームについて</h2>
             <p>
-                This is a game of programming!<br>
-                Your task is to program the movement of elevators, by writing a program in <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide">JavaScript</a>.
+                これは、プログラミングを使ったゲームです！<br>
+                あなたの仕事はエレベーターの移動を<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide">JavaScript</a>でプログラミングすることです。
             </p>
             <p>
-                The goal is to transport people in an efficient manner.<br>
-                Depending on how well you do it, you can progress through the ever more difficult challenges.<br>
-                Only the very best programs will be able to complete all the challenges.
+                目標は、人々を効率よく輸送することです。<br>
+                チャレンジを上手くこなすことができれば、さらに難しいチャレンジに進むことができます。<br>
+                完璧なプログラムなら、すべてのチャレンジをクリアすることができるでしょう。
             </p>
 
-            <h2>How to play</h2>
+            <h2>遊び方</h2>
             <p>
-                Enter your code in the input window below the game view, and press the <span class="emphasis-color">Apply</span> button to start the challenge.<br>
-                You can increase or decrease the speed of time by pressing the <i class="fa fa-plus emphasis-color"></i> and <i class="fa fa-minus emphasis-color"></i> buttons.
+                ゲーム画面の下部にあるテキストエリアにコードを入力し、<span class="emphasis-color">Apply</span>ボタンを押せばチャレンジが開始されます。<br>
+                <i class="fa fa-plus emphasis-color"></i> または <i class="fa fa-minus emphasis-color"></i> ボタンを押せば、進行を速くしたり遅くしたりすることができます。
             </p>
             <p>
-                If your program contains an error, you can use the developer tools in your web browser to try and debug it.
-                If you want to start over with the code, press the <span class="emphasis-color">Reset</span> button. This will revert the code to a working but simplistic implementation.<br>
-                If you have a favorite text editor, such as <a href="http://www.sublimetext.com/">Sublime Text</a>, feel free to edit the code there and paste it into the game editor.<br>
-                Your code is automatically saved in your local storage, so don't worry - it doesn't disappear if you accidentally close the browser.
+                もしプログラムにエラーがあったら、ブラウザの開発者ツールを使ってデバッグしてみてください。<br>
+                コーディングをやり直したくなったら、<span class="emphasis-color">Reset</span>ボタンを押してください。このボタンを押すと、一番最初のシンプルな実装に戻すことができます。<br>
+                もし好きなテキストエディタ（例えば <a href="http://www.sublimetext.com/">Sublime Text</a> など）があれば、コーディング後にゲームのエディタにコードを貼り付けてもOKです。<br>
+                あなたのコードはローカルストレージに自動的に保存されますので、間違ってブラウザを閉じてしまっても大丈夫です。
             </p>
-            <h2>Basics</h2>
+
+            <h2>基本</h2>
             <p>
-                Your code must declare an object containing at least two functions called <span class="emphasis-color">init</span> and <span class="emphasis-color">update</span>. Like this:
+                コードは少なくとも <span class="emphasis-color">init</span> と <span class="emphasis-color">update</span> という二つの関数をもつオブジェクトでなくてはなりません。以下に例を示します：
             </p>
             <div><pre><code>{
     init: function(elevators, floors) {
-        // Do stuff with the elevators and floors, which are both arrays of objects
+        // ここでエレベーターとフロアに処理を施します。
+        // どちらもオブジェクトの配列になっています。
     },
     update: function(dt, elevators, floors) {
-        // Do more stuff with the elevators and floors
-        // dt is the number of game seconds that passed since the last time update was called
+        // さらにエレベーターとフロアに処理を施します。
+        // dt は前回 update が呼び出された後、ゲーム内で何秒経過したかを示す数値です。
     }
 }</code></pre></div>
-            <p>These functions will then be called by the game during the challenge.<br>
-            <span class="emphasis-color">init</span> will be called when the challenge starts, and <span class="emphasis-color">update</span> repeatedly during the challenge.
+            <p>
+                これらの関数はチャレンジの進行において、ゲームから呼び出されます。<br>
+                <span class="emphasis-color">init</span> はチャレンジが開始したら呼び出され、 <span class="emphasis-color">update</span> はチャレンジの進行中に繰り返し呼び出されます。
             </p>
             <p>
-                Normally you will put most of your code in the <span class="emphasis-color">init</span> function, to set up event listeners and logic.
+                通常、ほとんどのコードは <span class="emphasis-color">init</span> 関数に書き、イベントリスナーや処理の登録を行うことになります。
             </p>
-            <h2>Code examples</h2>
-            <h3>How to control an elevator</h3>
+
+            <h2>コードの例</h2>
+            <h3>エレベーターの制御方法</h3>
             <dl>
                 <dt><pre><code>elevator.goToFloor(1);</code></pre></dt>
-                    <dd>Tell the elevator to move to floor 1 after completing other tasks, if any. Note that this will have no effect if the elevator is already queued to go to that floor.</dd>
+                    <dd>エレベーターに「他のすべてのタスクが完了した後、フロア1に移動せよ」と指示します。
+                        もしエレベーターのタスクキューにその階の移動が含まれていたら、このコードは結果的に何の効果も残さないことに注意してください。
                 <dt><pre><code>if(elevator.currentFloor() > 2) { ... }</code></pre></dt>
-                    <dd>Calling currentFloor gets the floor number that the elevator currently is on. Note that this is a rounded number and does not necessarily mean the elevator is in a stopped state.</dd>
-            </dl>
-            <h3>Listening for events</h3>
-            <p>It is possible to listen for events, like when stopping at a floor, or a button has been pressed.</p>
-            <dl>
-                <dt><pre><code>elevator.on("idle", function() { elevator.goToFloor(0); });</code></pre></dt>
-                    <dd>Listen for the "idle" event issued by the elevator, when the task queue has been emptied and the elevator is doing nothing. In this example we tell it to move to floor 0.</dd>
-                <dt><pre><code>elevator.on("floor_button_pressed", function(floorNum) { ... } );</code></pre></dt>
-                    <dd>Listen for the "floor_button_pressed" event, issued when a passenger pressed a button inside the elevator. This indicates that the passenger wants to go to that floor.</dd>
-                <dt><pre><code>floor.on("up_button_pressed", function() { ... } );</code></pre></dt>
-                    <dd>Listen for the "up_button_pressed" event, issued when a passenger pressed the up button on the floor they are waiting on. This indicates that the passenger wants to go to another floor.</dd>
+                    <dd>currentFloor関数は、現在エレベーターがどの階にいるかを返します。
+                        この数値は丸められており、必ずしもエレベーターがその階に停止しているとは限らないことに注意してください。
             </dl>
 
-            <h2 id="docs">API documentation</h2>
-            <h3>Elevator object</h3>
+            <h3>イベントの購読</h3>
+            <p>
+                エレベーターがフロアに止まったり、エレベーターやフロアのボタンが押されたときのイベントを購読することができます。
+            </p>
+            <dl>
+                <dt><pre><code>elevator.on("idle", function() { elevator.goToFloor(0); });</code></pre></dt>
+                    <dd>"idle" イベントを購読します。このイベントはエレベーターのタスクキューが空になって何もすることがなくなったときに発火されます。
+                        この例では、フロア0に移動するよう指示しています。</dd>
+                <dt><pre><code>elevator.on("floor_button_pressed", function(floorNum) { ... } );</code></pre></dt>
+                    <dd>"floor_button_pressed" イベントを購読します。このイベントは乗客がエレベーターの中にあるボタンを押したときに発火されます。
+                        つまり、乗客がその階に行きたがっているということがわかります。</dd>
+                <dt><pre><code>floor.on("up_button_pressed", function() { ... } );</code></pre></dt>
+                    <dd>"up_button_pressed" イベントを購読します。このイベントは乗客が待機しているフロアにある「上へ行く」ボタンを押したときに発火されます。
+                        つまり、乗客がどこか別の階に行きたがっているということがわかります。</dd>
+            </dl>
+
+            <h2 id="docs">APIドキュメント</h2>
+            <h3>Elevator オブジェクト</h3>
             <table class="doctable">
                 <thead><th width="150">Property</th><th width="90">Type</th><th width="190">Explanation</th><th width="*">Example</th></thead>
                 <tbody>
