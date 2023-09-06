@@ -33,12 +33,12 @@
 
             <h2>遊び方</h2>
             <p>
-                ゲーム画面の下部にあるテキストエリアにコードを入力し、<span class="emphasis-color">Apply</span>ボタンを押せばチャレンジが開始されます。<br>
+                ゲーム画面の下部にあるテキストエリアにコードを入力し、<span class="emphasis-color">実行</span>ボタンを押せばチャレンジが開始されます。<br>
                 <i class="fa fa-plus emphasis-color"></i> または <i class="fa fa-minus emphasis-color"></i> ボタンを押せば、進行を速くしたり遅くしたりすることができます。
             </p>
             <p>
                 もしプログラムにエラーがあったら、ブラウザの開発者ツールを使ってデバッグしてみてください。<br>
-                コーディングをやり直したくなったら、<span class="emphasis-color">Reset</span>ボタンを押してください。このボタンを押すと、一番最初のシンプルな実装に戻すことができます。<br>
+                コーディングをやり直したくなったら、<span class="emphasis-color">リセット</span>ボタンを押してください。このボタンを押すと、一番最初のシンプルな実装に戻すことができます。<br>
                 もし好きなテキストエディタ（例えば <a href="http://www.sublimetext.com/">Sublime Text</a> など）があれば、コーディング後にゲームのエディタにコードを貼り付けてもOKです。<br>
                 あなたのコードはローカルストレージに自動的に保存されますので、間違ってブラウザを閉じてしまっても大丈夫です。
             </p>
@@ -69,8 +69,8 @@
             <h3>エレベーターの制御方法</h3>
             <dl>
                 <dt><pre><code>elevator.goToFloor(1);</code></pre></dt>
-                    <dd>エレベーターに「他のすべてのタスクが完了した後、フロア1に移動せよ」と指示します。
-                        もしエレベーターのタスクキューにその階の移動が含まれていたら、このコードは結果的に何の効果も残さないことに注意してください。
+                    <dd>エレベーターに「他のすべての目的地をまわった後、フロア1に移動せよ」と指示します。
+                        もしエレベーターの目的地キューにその階の移動が含まれていたら、このコードは結果的に何の効果も残さないことに注意してください。
                 <dt><pre><code>if(elevator.currentFloor() > 2) { ... }</code></pre></dt>
                     <dd>currentFloor関数は、現在エレベーターがどの階にいるかを返します。
                         この数値は丸められており、必ずしもエレベーターがその階に停止しているとは限らないことに注意してください。
@@ -82,7 +82,7 @@
             </p>
             <dl>
                 <dt><pre><code>elevator.on("idle", function() { elevator.goToFloor(0); });</code></pre></dt>
-                    <dd>"idle" イベントを購読します。このイベントはエレベーターのタスクキューが空になって何もすることがなくなったときに発火されます。
+                    <dd>"idle" イベントを購読します。このイベントはエレベーターの目的地キューが空になって何もすることがなくなったときに発火されます。
                         この例では、フロア0に移動するよう指示しています。</dd>
                 <dt><pre><code>elevator.on("floor_button_pressed", function(floorNum) { ... } );</code></pre></dt>
                     <dd>"floor_button_pressed" イベントを購読します。このイベントは乗客がエレベーターの中にあるボタンを押したときに発火されます。
@@ -95,33 +95,120 @@
             <h2 id="docs">APIドキュメント</h2>
             <h3>Elevator オブジェクト</h3>
             <table class="doctable">
-                <thead><th width="150">Property</th><th width="90">Type</th><th width="190">Explanation</th><th width="*">Example</th></thead>
+                <thead><th width="150">プロパティ</th><th width="90">型</th><th width="190">説明</th><th width="*">例</th></thead>
                 <tbody>
-                    <tr><td>goToFloor</td><td>function</td><td><small>Queue the elevator to go to specified floor number. If you specify true as second argument, the elevator will go to that floor directly, and then go to any other queued floors.</small></td><td><pre><code>elevator.goToFloor(3); // Do it after anything else
-elevator.goToFloor(2, true); // Do it before anything else</code></pre></td></tr>
-                    <tr><td>stop</td><td>function</td><td><small>Clear the destination queue and stop the elevator if it is moving. Note that you normally don't need to stop elevators - it is intended for advanced solutions with in-transit rescheduling logic. Also, note that the elevator will probably not stop at a floor, so passengers will not get out.</small></td><td><pre><code>elevator.stop();</code></pre></td></tr>
-                    <tr><td>currentFloor</td><td>function</td><td><small>Gets the floor number that the elevator currently is on.</small></td><td><pre><code>if(elevator.currentFloor() === 0) {
-    // Do something special?
-}</code></pre></td></tr>
-                    <tr><td>goingUpIndicator</td><td>function</td><td><small>Gets or sets the going up indicator, which will affect passenger behaviour when stopping at floors.</small></td><td><pre><code>if(elevator.goingUpIndicator()) {
-    elevator.goingDownIndicator(false);
-}</code></pre></td></tr>
-                    <tr><td>goingDownIndicator</td><td>function</td><td><small>Gets or sets the going down indicator, which will affect passenger behaviour when stopping at floors.</small></td><td><pre><code>if(elevator.goingDownIndicator()) {
-    elevator.goingUpIndicator(false);
-}</code></pre></td></tr>
-                    <tr><td>maxPassengerCount</td><td>function</td><td><small>Gets the maximum number of passengers that can occupy the elevator at the same time.</small></td><td><pre><code>if(elevator.maxPassengerCount() > 5) {
-    // Use this elevator for something special, because it's big
-}</code></pre></td></tr>
-                    <tr><td>loadFactor</td><td>function</td><td><small>Gets the load factor of the elevator. 0 means empty, 1 means full. Varies with passenger weights, which vary - not an exact measure.</small></td><td><pre><code>if(elevator.loadFactor() < 0.4) {
-    // Maybe use this elevator, since it's not full yet?
-}</code></pre></td></tr>
-                    <tr><td>destinationDirection</td><td>function</td><td><small>Gets the direction the elevator is currently going to move toward. Can be "up", "down" or "stopped".</small></td></tr>
-                    <tr><td>destinationQueue</td><td>array</td><td><small>The current destination queue, meaning the floor numbers the elevator is scheduled to go to. Can be modified and emptied if desired. Note that you need to call checkDestinationQueue() for the change to take effect immediately.</small></td><td><pre><code>elevator.destinationQueue = [];
-elevator.checkDestinationQueue();</code></pre></td></tr>
-                    <tr><td>checkDestinationQueue</td><td>function</td><td><small>Checks the destination queue for any new destinations to go to. Note that you only need to call this if you modify the destination queue explicitly.</small></td><td><pre><code>elevator.checkDestinationQueue();</code></pre></td></tr>
-                    <tr><td>getPressedFloors</td><td>function</td><td><small>Gets the currently pressed floor numbers as an array.</small></td><td><pre><code>if(elevator.getPressedFloors().length > 0) {
-    // Maybe go to some chosen floor first?
-}</code></pre></td></tr>
+                    <tr>
+                        <td>goToFloor</td>
+                        <td>function</td>
+                        <td>
+                            <small>
+                                指定した階へ移動する指示をエレベーターのキューに入れます。
+                                第二引数を true に指定した場合、エレベーターはただちにその階へ向かい、そのあとにキューにあるフロアへ移動します。
+                            </small>
+                        </td>
+                        <td>
+                            <pre><code>elevator.goToFloor(3); // 既にキューにある他の目的地をまわってから、3階へ移動します。
+                            elevator.goToFloor(2, true); // 既にキューにある他の目的地へ行く前に2階へ移動します。</code></pre>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>stop</td>
+                        <td>function</td>
+                        <td>
+                            <small>
+                                目的地のキューをクリアし、エレベーターが移動中なら停止させます。
+                                もっとも、通常エレベーターを停止させる必要はありません（輸送中のリスケジュールを伴うような、複雑な処理のために使われることを想定しています）。
+                                また、ほとんどの場合エレベーターがぴったりフロアに止まることはありませんから、乗客は降りることができないでしょう。
+                            </small>
+                        </td>
+                        <td><pre><code>elevator.stop();</code></pre></td>
+                    </tr>
+                    <tr>
+                        <td>currentFloor</td>
+                        <td>function</td>
+                        <td><small>現在エレベーターが何階にいるかを取得します。（注意：このゲームのフロアは0階から始まります。）</small></td>
+                        <td><pre><code>if(elevator.currentFloor() === 0) {
+                            // なにか特別な処理でもする？
+                        }</code></pre></td>
+                    </tr>
+                    <tr>
+                        <td>goingUpIndicator</td>
+                        <td>function</td>
+                        <td>
+                            <small>「上昇中」表示の状態を取得または設定します。この表示により、エレベーターがフロアに止まったとき乗客の行動に影響を与えるでしょう。</small>
+                        </td>
+                        <td><pre><code>if(elevator.goingUpIndicator()) {
+                            elevator.goingDownIndicator(false);
+                        }</code></pre></td>
+                    </tr>
+                    <tr>
+                        <td>goingDownIndicator</td>
+                        <td>function</td>
+                        <td>
+                            <small>「下降中」表示の状態を取得または設定します。この表示により、エレベーターがフロアに止まったとき乗客の行動に影響を与えるでしょう。</small>
+                        </td>
+                        <td><pre><code>if(elevator.goingDownIndicator()) {
+                            elevator.goingUpIndicator(false);
+                        }</code></pre></td>
+                    </tr>
+                    <tr>
+                        <td>maxPassengerCount</td>
+                        <td>function</td>
+                        <td>
+                            <small>エレベーターが一度に輸送可能な乗客の最大人数を取得します。</small>
+                        </td>
+                        <td><pre><code>if(elevator.maxPassengerCount() > 5) {
+                            // このエレベーターは特殊な用途に使用することにしよう。デカいからね。
+                        }</code></pre></td>
+                    </tr>
+                    <tr>
+                        <td>loadFactor</td>
+                        <td>function</td>
+                        <td>
+                            <small>エレベーターの積載率を取得します。0は誰も乗っていないことを、1は満員であることを示します。これは乗客の体重によって変動するので、正確な指標ではありません。</small>
+                        </td>
+                        <td><pre><code>if(elevator.loadFactor() < 0.4) {
+                            // たぶんこのエレベーターは満員じゃないから、使えるよね？
+                        }</code></pre></td>
+                    </tr>
+                    <tr>
+                        <td>destinationDirection</td>
+                        <td>function</td>
+                        <td>
+                            <small>現在エレベーターがどの方向に向かって移動しているかを取得します。得られる値は "up", "down" または "stopped" のいずれかです。</small>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>destinationQueue</td>
+                        <td>array</td>
+                        <td>
+                            <small>
+                                現在の目的地キュー、つまりエレベーターの移動先としてスケジュールされているフロアの番号を取得します。
+                                必要なら、キューの内容を書き換えたり空にしてもかまいません。ただし、ただちに変更を反映させるためには checkDestinationQueue() を呼び出す必要があります。
+                            </small>
+                        </td>
+                        <td><pre><code>elevator.destinationQueue = [];
+                        elevator.checkDestinationQueue();</code></pre></td>
+                    </tr>
+                    <tr>
+                        <td>checkDestinationQueue</td>
+                        <td>function</td>
+                        <td>
+                            <small>
+                                目的地キューを確認し、新しく他に目指すべき目的地がないかどうかをチェックします。
+                                もし目的地キューを明示的に変更した場合は、この関数を呼ぶだけで変更が反映されます。
+                            </small>
+                        </td>
+                        <td><pre><code>elevator.checkDestinationQueue();</code></pre></td></tr>
+                    <tr>
+                        <td>getPressedFloors</td>
+                        <td>function</td>
+                        <td>
+                            <small>現在押されているフロア番号（エレベーター内のボタン）を配列で取得します。</small>
+                        </td>
+                        <td><pre><code>if(elevator.getPressedFloors().length > 0) {
+                            // まず選ばれたフロアへ移動する？
+                        }</code></pre></td></tr>
                 </tbody>
             </table>
             <table class="doctable">
