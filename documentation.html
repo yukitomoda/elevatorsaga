@@ -128,8 +128,8 @@
                         <td>function</td>
                         <td><small>現在エレベーターが何階にいるかを取得します。（注意：このゲームのフロアは0階から始まります。）</small></td>
                         <td><pre><code>if(elevator.currentFloor() === 0) {
-                            // なにか特別な処理でもする？
-                        }</code></pre></td>
+    // なにか特別な処理でもする？
+}</code></pre></td>
                     </tr>
                     <tr>
                         <td>goingUpIndicator</td>
@@ -138,8 +138,8 @@
                             <small>「上昇中」表示の状態を取得または設定します。この表示により、エレベーターがフロアに止まったとき乗客の行動に影響を与えるでしょう。</small>
                         </td>
                         <td><pre><code>if(elevator.goingUpIndicator()) {
-                            elevator.goingDownIndicator(false);
-                        }</code></pre></td>
+    elevator.goingDownIndicator(false);
+}</code></pre></td>
                     </tr>
                     <tr>
                         <td>goingDownIndicator</td>
@@ -148,8 +148,8 @@
                             <small>「下降中」表示の状態を取得または設定します。この表示により、エレベーターがフロアに止まったとき乗客の行動に影響を与えるでしょう。</small>
                         </td>
                         <td><pre><code>if(elevator.goingDownIndicator()) {
-                            elevator.goingUpIndicator(false);
-                        }</code></pre></td>
+    elevator.goingUpIndicator(false);
+}</code></pre></td>
                     </tr>
                     <tr>
                         <td>maxPassengerCount</td>
@@ -158,8 +158,8 @@
                             <small>エレベーターが一度に輸送可能な乗客の最大人数を取得します。</small>
                         </td>
                         <td><pre><code>if(elevator.maxPassengerCount() > 5) {
-                            // このエレベーターは特殊な用途に使用することにしよう。デカいからね。
-                        }</code></pre></td>
+    // このエレベーターは特殊な用途に使用することにしよう。デカいからね。
+}</code></pre></td>
                     </tr>
                     <tr>
                         <td>loadFactor</td>
@@ -168,8 +168,8 @@
                             <small>エレベーターの積載率を取得します。0は誰も乗っていないことを、1は満員であることを示します。これは乗客の体重によって変動するので、正確な指標ではありません。</small>
                         </td>
                         <td><pre><code>if(elevator.loadFactor() < 0.4) {
-                            // たぶんこのエレベーターは満員じゃないから、使えるよね？
-                        }</code></pre></td>
+    // たぶんこのエレベーターは満員じゃないから、使えるよね？
+}</code></pre></td>
                     </tr>
                     <tr>
                         <td>destinationDirection</td>
@@ -188,7 +188,7 @@
                             </small>
                         </td>
                         <td><pre><code>elevator.destinationQueue = [];
-                        elevator.checkDestinationQueue();</code></pre></td>
+elevator.checkDestinationQueue();</code></pre></td>
                     </tr>
                     <tr>
                         <td>checkDestinationQueue</td>
@@ -207,8 +207,8 @@
                             <small>現在押されているフロア番号（エレベーター内のボタン）を配列で取得します。</small>
                         </td>
                         <td><pre><code>if(elevator.getPressedFloors().length > 0) {
-                            // まず選ばれたフロアへ移動する？
-                        }</code></pre></td></tr>
+    // まず選ばれたフロアへ移動する？
+}</code></pre></td></tr>
                 </tbody>
             </table>
             <table class="doctable">
