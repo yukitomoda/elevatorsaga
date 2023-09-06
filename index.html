@@ -63,13 +63,13 @@
         <div class="feedback">
             <h2 class="emphasis-color">{title}</h2>
             <p class="emphasis-color">{message}</p>
-            <a href="{url}" class="emphasis-color">Next challenge <i class="fa fa-caret-right blink" style="text-decoration: blink"></i></a>
+            <a href="{url}" class="emphasis-color">次のチャレンジへ<i class="fa fa-caret-right blink" style="text-decoration: blink"></i></a>
         </div>
     </script>
 
     <script type="text/template" id="challenge-template">
         <div class="left">
-            <h3>Challenge #{num}: {challenge.condition.description}</h3>
+            <h3>チャレンジ No.{num}: {challenge.condition.description}</h3>
         </div>
         <button class="right startstop unselectable" style="width: 110px">{startButtonText}</button>
         <h3 class="right">
@@ -86,17 +86,17 @@
     <script type="text/plain" id="default-elev-implementation">
 {
     init: function(elevators, floors) {
-        var elevator = elevators[0]; // Let's use the first elevator
+        var elevator = elevators[0]; // 一番目のエレベーターを使用
 
-        // Whenever the elevator is idle (has no more queued destinations) ...
+        // エレベーターが待機（キューに目的地がない）状態になったら・・・
         elevator.on("idle", function() {
-            // let's go to all the floors (or did we forget one?)
+            // すべてのフロアを巡回する（もしかしたら一つ忘れてるカモ）
             elevator.goToFloor(0);
             elevator.goToFloor(1);
         });
     },
     update: function(dt, elevators, floors) {
-        // We normally don't need to do anything here
+        // 普通、ここでは何もする必要はないはず。
     }
 }
     </script>
@@ -139,13 +139,15 @@
     <div class="container">
         <div class="header">
             <h1 class="left">Elevator Saga <em class="emphasis-color">The elevator programming game</em></h1>
-            <a class="right" href="https://github.com/magwo/elevatorsaga/wiki/">Wiki & Solutions</a>
-            <a class="right" href="documentation.html#docs">Documentation</a>
-            <a class="right" href="documentation.html">Help</a>
+            <a class="right" href="https://github.com/magwo/elevatorsaga/wiki/">Wiki & 解法例</a>
+            <a class="right" href="documentation.html#docs">ドキュメント</a>
+            <a class="right" href="documentation.html">ヘルプ</a>
         </div>
 
         <noscript>
-            <h2>Your browser does not appear to support JavaScript. This page contains a browser-based programming game implemented in JavaScript.</h2>
+            <h2>
+                お使いのブラウザはJavaScriptがサポートされていないようです。このページはJavaScriptで実装されたプログラミングブラウザゲームです。
+            </h2>
         </noscript>
 
         <div class="challenge" style="height: 40px">
@@ -156,12 +158,12 @@
             <div class="innerworld">
             </div>
             <div class="statscontainer">
-                <div style="top: 20px"><span class="key">Transported</span><span class="value transportedcounter"></span></div>
-                <div style="top: 40px"><span class="key">Elapsed time</span><span class="value elapsedtime"></span></div>
-                <div style="top: 60px"><span class="key">Transported/s</span><span class="value transportedpersec"></span></div>
-                <div style="top: 80px"><span class="key">Avg waiting time</span><span class="value avgwaittime"></span></div>
-                <div style="top: 100px"><span class="key">Max waiting time</span><span class="value maxwaittime"></span></div>
-                <div style="top: 120px"><span class="key" title="Number of floors that have been travelled by elevators">Moves</span><span class="value movecount"></span></div>
+                <div style="top: 20px"><span class="key">輸送した人数</span><span class="value transportedcounter"></span></div>
+                <div style="top: 40px"><span class="key">経過時間</span><span class="value elapsedtime"></span></div>
+                <div style="top: 60px"><span class="key">輸送人数（秒あたり）</span><span class="value transportedpersec"></span></div>
+                <div style="top: 80px"><span class="key">平均待ち時間</span><span class="value avgwaittime"></span></div>
+                <div style="top: 100px"><span class="key">最大待ち時間</span><span class="value maxwaittime"></span></div>
+                <div style="top: 120px"><span class="key" title="エレベーターが移動したフロアの総数">移動量</span><span class="value movecount"></span></div>
             </div>
         </div>
 
@@ -169,22 +171,22 @@
         <div class="code">
             <textarea name="Code" id="code"></textarea>
         </div>
-        <button id="button_reset" style="float: left">Reset</button>
-        <button id="button_resetundo" style="float: left">Undo reset</button>
-        <button id="button_apply" style="float: right">Apply</button>
-        <button id="button_save" style="float: right">Save</button>
+        <button id="button_reset" style="float: left">リセット</button>
+        <button id="button_resetundo" style="float: left">リセットを取り消し</button>
+        <button id="button_apply" style="float: right">実行</button>
+        <button id="button_save" style="float: right">保存</button>
         <span id="save_message" style="float: right"></span>
         <span id="fitness_message" style="float: right"></span>
         <div style="clear:both;"></div>
 
         <div style="margin-top: 20px">
-            <h3>Confused? Open the <a href="documentation.html">Help and API documentation</a> page</h3>
+            <h3>プレイ方法がわからない場合は <a href="documentation.html">ヘルプ & API ドキュメント</a> ページを開いてみてください。</h3>
         </div>
         <div class="footer">
-            <h4>Made by Magnus Wolffelt and contributors</h4>
+            <h4>このゲームは Magnus Wolffelt とその他のコントリビューター達によって作成されました。</h4>
             <h4>Version <span class="emphasis-color">1.6.5</span></h4>
-            <h4><a href="https://github.com/magwo/elevatorsaga">Source code</a> on GitHub</h4>
-            <h4><a href="test/index.html">Run tests</a></h4>
+            <h4>GitHubリポジトリは<a href="https://github.com/yukitomoda/elevatorsaga">こちら</a></h4>
+            <h4>テストページは<a href="test/index.html">こちら</a></h4>
         </div>
     </div>
 
