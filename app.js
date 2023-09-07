@@ -60,7 +60,7 @@ var createEditor = function() {
     });
 
     $("#button_reset").click(function() {
-        if(confirm("Do you really want to reset to the default implementation?")) {
+        if(confirm("コードをデフォルトの実装にリセットしてもよろしいですか？")) {
             localStorage.setItem("develevateBackupCode", cm.getValue());
             reset();
         }
@@ -68,7 +68,7 @@ var createEditor = function() {
     });
 
     $("#button_resetundo").click(function() {
-        if(confirm("Do you want to bring back the code as before the last reset?")) {
+        if(confirm("最後にリセットを実行した時点までコードを戻してもよろしいですか？")) {
             cm.setValue(localStorage.getItem("develevateBackupCode") || "");
         }
         cm.focus();
