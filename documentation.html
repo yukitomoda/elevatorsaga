@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="font-awesome-4.1-1.0/css/font-awesome.min.css" type="text/css" media="all">
     <link href='//fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="style.css" type="text/css" media="all">
+    <link rel="stylesheet" href="help.css" type="text/css" media="all">
 
     <link rel="stylesheet" href="libs/highlight/styles/default.css" type="text/css" media="all">
     <link rel="stylesheet" href="libs/highlight/styles/solarized_light.css" type="text/css" media="all">
@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <div class="container" style="width: 960px">
+    <div class="container">
         <div class="header">
             <h1>Elevator Saga <em class="emphasis-color">ヘルプ ＆ APIドキュメント</em></h1>
         </div>
@@ -116,20 +116,18 @@
             <h3>Elevator オブジェクト</h3>
             <table class="doctable">
                 <thead>
-                    <th width="150">プロパティ</th>
-                    <th width="90">型</th>
-                    <th width="190">説明</th>
-                    <th width="*">例</th>
+                    <th class="property">プロパティ</th>
+                    <th class="type">型</th>
+                    <th class="description">説明</th>
+                    <th class="example">例</th>
                 </thead>
                 <tbody>
                     <tr>
                         <td>goToFloor</td>
                         <td>function</td>
                         <td>
-                            <small>
                                 指定した階へ移動する指示をエレベーターのキューに入れます。
                                 第二引数を true に指定した場合、エレベーターはただちにその階へ向かい、そのあとにキューにあるフロアへ移動します。
-                            </small>
                         </td>
                         <td>
                             <pre><code>elevator.goToFloor(3); // 他の目的地をまわってから、3階へ移動します。
@@ -140,11 +138,9 @@ elevator.goToFloor(2, true); // 他の目的地へ行く前に2階へ移動し�
                         <td>stop</td>
                         <td>function</td>
                         <td>
-                            <small>
                                 目的地のキューをクリアし、エレベーターが移動中なら停止させます。
                                 もっとも、通常エレベーターを停止させる必要はありません（輸送中のリスケジュールを伴うような、複雑な処理のために使われることを想定しています）。
                                 また、ほとんどの場合エレベーターがぴったりフロアに止まることはありませんから、乗客は降りることができないでしょう。
-                            </small>
                         </td>
                         <td>
                             <pre><code>elevator.stop();</code></pre>
@@ -153,7 +149,7 @@ elevator.goToFloor(2, true); // 他の目的地へ行く前に2階へ移動し�
                     <tr>
                         <td>currentFloor</td>
                         <td>function</td>
-                        <td><small>現在エレベーターが何階にいるかを取得します。（注意：このゲームのフロアは0階から始まります。）</small></td>
+                        <td>現在エレベーターが何階にいるかを取得します。（注意：このゲームのフロアは0階から始まります。）</td>
                         <td>
                             <pre><code>if(elevator.currentFloor() === 0) {
     // なにか特別な処理でもする？
@@ -164,7 +160,7 @@ elevator.goToFloor(2, true); // 他の目的地へ行く前に2階へ移動し�
                         <td>goingUpIndicator</td>
                         <td>function</td>
                         <td>
-                            <small>「上昇中」表示の状態を取得または設定します。この表示により、エレベーターがフロアに止まったとき乗客の行動に影響を与えるでしょう。</small>
+                            「上昇中」表示の状態を取得または設定します。この表示により、エレベーターがフロアに止まったとき乗客の行動に影響を与えるでしょう。
                         </td>
                         <td>
                             <pre><code>if(elevator.goingUpIndicator()) {
@@ -176,7 +172,7 @@ elevator.goToFloor(2, true); // 他の目的地へ行く前に2階へ移動し�
                         <td>goingDownIndicator</td>
                         <td>function</td>
                         <td>
-                            <small>「下降中」表示の状態を取得または設定します。この表示により、エレベーターがフロアに止まったとき乗客の行動に影響を与えるでしょう。</small>
+                            「下降中」表示の状態を取得または設定します。この表示により、エレベーターがフロアに止まったとき乗客の行動に影響を与えるでしょう。
                         </td>
                         <td>
                             <pre><code>if(elevator.goingDownIndicator()) {
@@ -188,7 +184,7 @@ elevator.goToFloor(2, true); // 他の目的地へ行く前に2階へ移動し�
                         <td>maxPassengerCount</td>
                         <td>function</td>
                         <td>
-                            <small>エレベーターが一度に輸送可能な乗客の最大人数を取得します。</small>
+                            エレベーターが一度に輸送可能な乗客の最大人数を取得します。
                         </td>
                         <td>
                             <pre><code>if(elevator.maxPassengerCount() > 5) {
@@ -201,7 +197,7 @@ elevator.goToFloor(2, true); // 他の目的地へ行く前に2階へ移動し�
                         <td>loadFactor</td>
                         <td>function</td>
                         <td>
-                            <small>エレベーターの積載率を取得します。0は誰も乗っていないことを、1は満員であることを示します。これは乗客の体重によって変動するので、正確な指標ではありません。</small>
+                            エレベーターの積載率を取得します。0は誰も乗っていないことを、1は満員であることを示します。これは乗客の体重によって変動するので、正確な指標ではありません。
                         </td>
                         <td>
                             <pre><code>if(elevator.loadFactor() < 0.4) {
@@ -213,17 +209,20 @@ elevator.goToFloor(2, true); // 他の目的地へ行く前に2階へ移動し�
                         <td>destinationDirection</td>
                         <td>function</td>
                         <td>
-                            <small>現在エレベーターがどの方向に向かって移動しているかを取得します。得られる値は "up", "down" または "stopped" のいずれかです。</small>
+                            現在エレベーターがどの方向に向かって移動しているかを取得します。得られる値は "up", "down" または "stopped" のいずれかです。
+                        </td>
+                        <td>
+                            <pre><code>if (elevator.destinationDirection() === "up") {
+    // 上昇中・・・
+}</code></pre>
                         </td>
                     </tr>
                     <tr>
                         <td>destinationQueue</td>
                         <td>array</td>
                         <td>
-                            <small>
                                 現在の目的地キュー、つまりエレベーターの移動先としてスケジュールされているフロアの番号を取得します。
                                 必要なら、キューの内容を書き換えたり空にしてもかまいません。ただし、ただちに変更を反映させるためには checkDestinationQueue() を呼び出す必要があります。
-                            </small>
                         </td>
                         <td>
                             <pre><code>elevator.destinationQueue = [];
@@ -234,10 +233,8 @@ elevator.checkDestinationQueue();</code></pre>
                         <td>checkDestinationQueue</td>
                         <td>function</td>
                         <td>
-                            <small>
                                 目的地キューを確認し、新しく他に目指すべき目的地がないかどうかをチェックします。
                                 もし目的地キューを明示的に変更した場合は、この関数を呼ぶだけで変更が反映されます。
-                            </small>
                         </td>
                         <td>
                             <pre><code>elevator.checkDestinationQueue();</code></pre>
@@ -247,7 +244,7 @@ elevator.checkDestinationQueue();</code></pre>
                         <td>getPressedFloors</td>
                         <td>function</td>
                         <td>
-                            <small>現在押されているフロア番号（エレベーター内のボタン）を配列で取得します。</small>
+                            現在押されているフロア番号（エレベーター内のボタン）を配列で取得します。
                         </td>
                         <td>
                             <pre><code>if(elevator.getPressedFloors().length > 0) {
@@ -259,15 +256,15 @@ elevator.checkDestinationQueue();</code></pre>
             </table>
             <table class="doctable">
                 <thead>
-                    <th width="150">イベント</th>
-                    <th width="280">説明</th>
-                    <th>例</th>
+                    <th class="event">イベント</th>
+                    <th class="description">説明</th>
+                    <th class="example">例</th>
                 </thead>
                 <tbody>
                     <tr>
                         <td>idle</td>
                         <td>
-                            <small>エレベーターがすべてのタスクを完了し、何もしていないときに発火します。</small>
+                            エレベーターがすべてのタスクを完了し、何もしていないときに発火します。
                         </td>
                         <td>
                             <pre><code>elevator.on("idle", function() { ... });</code></pre>
@@ -276,23 +273,21 @@ elevator.checkDestinationQueue();</code></pre>
                     <tr>
                         <td>floor_button_pressed</td>
                         <td>
-                            <small>乗客がエレベーターの中のボタンを押したときに発火します。</small>
+                            乗客がエレベーターの中のボタンを押したときに発火します。
                         </td>
                         <td>
                             <pre><code>elevator.on("floor_button_pressed", function(floorNum) {
-                        // Maybe tell the elevator to go to that floor?
-                    })</code></pre>
+    // エレベーターにこの階へ向かうよう指示する？
+})</code></pre>
                         </td>
                     </tr>
                     <tr>
                         <td>passing_floor</td>
                         <td>
-                            <small>
                                 エレベーターがフロアを通過する直前に発火します。
                                 これは、その階に止まるかどうかを判断するのに良いタイミングです。
                                 このイベントは目的地のフロアに対しては発火しないことに注意してください。
                                 引数の direction には "up" または "down" が渡されます。
-                            </small>
                         </td>
                         <td>
                             <pre><code>elevator.on("passing_floor", function(floorNum, direction) { ... });</code></pre>
@@ -301,7 +296,7 @@ elevator.checkDestinationQueue();</code></pre>
                     <tr>
                         <td>stopped_at_floor</td>
                         <td>
-                            <small>エレベーターがフロアに到着したときに発生します。</small>
+                            エレベーターがフロアに到着したときに発生します。
                         </td>
                         <td>
                             <pre><code>elevator.on("stopped_at_floor", function(floorNum) {
@@ -315,17 +310,17 @@ elevator.checkDestinationQueue();</code></pre>
             <h3>Floor オブジェクト</h3>
             <table class="doctable">
                 <thead>
-                    <th width="150">プロパティ</th>
-                    <th width="90">型</th>
-                    <th width="190">説明</th>
-                    <th width="*">例</th>
+                    <th class="property">プロパティ</th>
+                    <th class="type">型</th>
+                    <th class="description">説明</th>
+                    <th class="example">例</th>
                 </thead>
                 <tbody>
                     <tr>
                         <td>floorNum</td>
                         <td>function</td>
                         <td>
-                            <small>この Floor オブジェクトの階の番号を取得します。</small>
+                            この Floor オブジェクトの階の番号を取得します。
                         </td>
                         <td>
                             <pre><code>if(floor.floorNum() > 3) { ... }</code></pre>
@@ -335,18 +330,16 @@ elevator.checkDestinationQueue();</code></pre>
             </table>
             <table class="doctable">
                 <thead>
-                    <th width="150">イベント</th>
-                    <th width="280">説明</th>
-                    <th>例</th>
+                    <th class="event">イベント</th>
+                    <th class="description">説明</th>
+                    <th class="example">例</th>
                 </thead>
                 <tbody>
                     <tr>
                         <td>up_button_pressed</td>
                         <td>
-                            <small>
                                 誰かがフロアの「上へ行く」ボタンを押したときに発火します。
                                 乗客はエレベーターに乗り損ねたとき、再度ボタンを押すことに注意してください。
-                            </small>
                         </td>
                         <td>
                             <pre><code>floor.on("up_button_pressed", function() {
@@ -357,10 +350,8 @@ elevator.checkDestinationQueue();</code></pre>
                     <tr>
                         <td>down_button_pressed</td>
                         <td>
-                            <small>
                                 誰かがフロアの「下へ行く」ボタンを押したときに発火します。
                                 乗客はエレベーターに乗り損ねたとき、再度ボタンを押すことに注意してください。
-                            </small>
                         </td>
                         <td>
                             <pre><code>floor.on("down_button_pressed", function() {
