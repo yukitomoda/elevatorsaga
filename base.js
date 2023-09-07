@@ -77,10 +77,10 @@ var getCodeObjFromCode = function(code) {
     obj = eval(code);
     /* jshint evil:false */
     if(typeof obj.init !== "function") {
-        throw "Code must contain an init function";
+        throw "コードのオブジェクトには init 関数が含まれていなければなりません。";
     }
     if(typeof obj.update !== "function") {
-        throw "Code must contain an update function";
+        throw "コードのオブジェクトには update 関数が含まれていなければなりません。";
     }
     return obj;
 }
