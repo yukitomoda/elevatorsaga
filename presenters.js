@@ -42,8 +42,8 @@ function presentChallenge($parent, challenge, app, world, worldController, chall
     var $challenge = $(riot.render(challengeTempl, {
         challenge: challenge,
         num: challengeNum,
-        timeScale: worldController.timeScale.toFixed(0) + "x",
-        startButtonText: world.challengeEnded ? "<i class='fa fa-repeat'></i> Restart" : (worldController.isPaused ? "Start" : "Pause")
+        timeScale: worldController.timeScale.toFixed(0) + "<small>倍速</small>",
+        startButtonText: world.challengeEnded ? "<i class='fa fa-repeat'></i> もう一度" : (worldController.isPaused ? "開始" : "停止")
     }));
     $parent.html($challenge);
 
