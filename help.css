@@ -1,0 +1,150 @@
+html, body {
+    background-color: #BFBD9F;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Oswald, Arial, Helvetica, sans-serif;
+}
+h1, h2, h3, h4, h5 {
+    color: #111111;
+    text-shadow: 0 2px 0.4pt rgba(0, 0, 0, 0.1);
+    margin-top: 0.4em;
+    margin-bottom: 0.3em;
+}
+
+h1, h2, h3, h4, h5, p {
+    color: #555;
+}
+
+.emphasis-color {
+    color: #F1F2D8;
+    text-shadow: 0 2px 0.4pt #555;
+}
+
+.error-color {
+    color: #d54;
+}
+
+a {
+    color: #444;
+    font-weight: bold;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+h2, h3, h4, h5 {
+    font-weight: bold;
+}
+
+dl {
+    color: #555;
+}
+dl dd {
+    font: 15px Arial, Helvetica, sans-serif;
+    margin-bottom: 1em;
+    margin-left: 1em;
+    width: 80%;
+}
+
+
+.container {
+    width: 80%;
+    min-width: 800px;
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 20px 0 40px 0;
+    background-color: #BFBD9F;
+}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.header {
+    height: 60px;
+}
+
+.header h1 {
+    line-height: 50px;
+    margin: 0;
+    padding: 0;
+}
+
+.header a {
+    display: inline-block;
+    margin-left: 15px;
+    font-size: 20px;
+    line-height: 50px;
+    padding: 0 4px;
+}
+
+.footer {
+    margin-top: 20px;
+}
+.footer h4 {
+    font-size: 13px;
+}
+
+.help {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.help p {
+    max-width: 75%;
+}
+
+.doctable {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: #555;
+    border: none;
+}
+
+.doctable th, .doctable td  {
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.doctable th.property {
+    max-width: 160px;
+}
+.doctable th.type {
+    max-width: 120px;
+}
+.doctable th.description {
+    max-width: 60%;
+}
+.doctable th.example {
+    max-width: 60%;
+}
+.doctable th.event {
+    max-width: 160px;
+}
+
+.doctable tr td:first-child {
+    padding-right: 5px;
+    color: #333;
+}
+
+.doctable td {
+    font: 13px Consolas, Monaco, monospace;
+}
