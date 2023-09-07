@@ -107,8 +107,8 @@
                             </small>
                         </td>
                         <td>
-                            <pre><code>elevator.goToFloor(3); // 既にキューにある他の目的地をまわってから、3階へ移動します。
-elevator.goToFloor(2, true); // 既にキューにある他の目的地へ行く前に2階へ移動します。</code></pre>
+                            <pre><code>elevator.goToFloor(3); // 他の目的地をまわってから、3階へ移動します。
+elevator.goToFloor(2, true); // 他の目的地へ行く前に2階へ移動します。</code></pre>
                         </td>
                     </tr>
                     <tr>
@@ -158,7 +158,8 @@ elevator.goToFloor(2, true); // 既にキューにある他の目的地へ行く
                             <small>エレベーターが一度に輸送可能な乗客の最大人数を取得します。</small>
                         </td>
                         <td><pre><code>if(elevator.maxPassengerCount() > 5) {
-    // このエレベーターは特殊な用途に使用することにしよう。デカいからね。
+    // このエレベーターは特殊な用途に使用することにしよう。
+    // デカいからね。
 }</code></pre></td>
                     </tr>
                     <tr>
